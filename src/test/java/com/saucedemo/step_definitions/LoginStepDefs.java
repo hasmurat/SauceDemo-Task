@@ -13,6 +13,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 public class LoginStepDefs extends LoginPage {
     @Given("User navigates to login page")
@@ -38,8 +39,15 @@ public class LoginStepDefs extends LoginPage {
     Scenario scenario;
     @Then("User can see Product Page")
     public void user_can_see_Product_Page() {
-        BrowserUtils.waitForVisibility(new ProductPage().subTitleLocator, 7);
-        Assert.assertTrue(new ProductPage().isSubTitleDisplayed());
+        boolean isPassed=false;
+        try{
+            BrowserUtils.waitForVisibility(new ProductPage().subTitleLocator, 7);
+            isPassed=new ProductPage().isSubTitleDisplayed();
+            Assert.assertTrue(isPassed);
+        }catch (TimeoutException e){
+            Assert.assertTrue(isPassed);
+        }
+
     }
 
     @Then("User can see warning message {string}")
@@ -54,12 +62,12 @@ public class LoginStepDefs extends LoginPage {
 
     @Then("User can not login")
     public void userCanNotLogin() {
-        boolean isPassed;
+        boolean isPassed=false;
         try {
             isPassed = new ProductPage().isSubTitleDisplayed();
+            Assert.assertFalse(isPassed);
         }catch (NoSuchElementException e){
-            isPassed = false;
+            Assert.assertFalse(isPassed);
         }
-        Assert.assertFalse(isPassed);
     }
 }
