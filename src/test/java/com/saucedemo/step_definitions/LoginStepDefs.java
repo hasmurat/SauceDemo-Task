@@ -12,6 +12,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 
 public class LoginStepDefs extends LoginPage {
     @Given("User navigates to login page")
@@ -49,5 +50,16 @@ public class LoginStepDefs extends LoginPage {
     @And("User hits Enter Button on keyword")
     public void userHitsEnterButtonOnKeyword() {
         passwordInputLocator.sendKeys(Keys.ENTER);
+    }
+
+    @Then("User can not login")
+    public void userCanNotLogin() {
+        boolean isPassed;
+        try {
+            isPassed = new ProductPage().isSubTitleDisplayed();
+        }catch (NoSuchElementException e){
+            isPassed = false;
+        }
+        Assert.assertFalse(isPassed);
     }
 }

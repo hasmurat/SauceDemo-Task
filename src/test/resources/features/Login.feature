@@ -81,3 +81,8 @@ Feature: Login functionality
       | awesome  | secret_sauce |
       | avenger  | secret_sauce |
       | justice  | secret_sauce |
+
+    Scenario: Login with empty username and empty password
+      Given User navigates to login page
+      When User clicks on login button
+      Then User can not login
