@@ -14,3 +14,5 @@ For login funcionality, 7 scenario are defined and executed:
   6.Login with invalid username and valid password
   
   7.Login with empty username and empty password
+  
+  8.After logout, user can not go back product page by navigating back
