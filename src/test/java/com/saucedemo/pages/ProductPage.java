@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductPage {
-    public ProductPage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+public class ProductPage extends BasePage {
 
     @FindBy(className = "title")
     public WebElement subTitleLocator;

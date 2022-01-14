@@ -86,3 +86,19 @@ Feature: Login functionality
       Given User navigates to login page
       When User clicks on login button
       Then User can not login
+
+    Scenario Outline: After logout, user can not go back product page by navigating back
+      Given User navigates to login page
+      When User enters "<username>" into username input
+      And User enters "<password>" into password input
+      And User clicks on login button
+      And User clicks on general menu icon
+      And User logouts
+      And User navigates back
+      Then User can not go back product page
+
+      Examples:
+        | username                | password     |
+        | standard_user           | secret_sauce |
+        | problem_user            | secret_sauce |
+        | performance_glitch_user | secret_sauce |

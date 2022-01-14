@@ -36,7 +36,6 @@ public class LoginStepDefs extends LoginPage {
         loginButtonLocator.click();
     }
 
-    Scenario scenario;
     @Then("User can see Product Page")
     public void user_can_see_Product_Page() {
         boolean isPassed=false;
@@ -47,7 +46,6 @@ public class LoginStepDefs extends LoginPage {
         }catch (TimeoutException e){
             Assert.assertTrue(isPassed);
         }
-
     }
 
     @Then("User can see warning message {string}")
@@ -70,4 +68,26 @@ public class LoginStepDefs extends LoginPage {
             Assert.assertFalse(isPassed);
         }
     }
+
+    @When("User clicks on general menu icon")
+    public void user_clicks_on_general_menu_icon() {
+        BrowserUtils.jseClick(generalMenuIcons);
+    }
+
+    @When("User logouts")
+    public void user_logouts() {
+        logOutLocator.click();
+    }
+
+    @When("User navigates back")
+    public void user_navigates_back() throws InterruptedException {
+        Driver.get().navigate().back();
+        Thread.sleep(2000);
+    }
+
+    @Then("User can not go back product page")
+    public void user_can_not_go_back_product_page() {
+       userCanNotLogin();
+    }
+
 }
