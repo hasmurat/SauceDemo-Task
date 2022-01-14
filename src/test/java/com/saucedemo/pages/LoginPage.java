@@ -4,11 +4,8 @@ import com.saucedemo.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import sun.security.util.Password;
 
 public class LoginPage extends BasePage {
-
 
     @FindBy(id = "user-name")
     public WebElement usernameInputLocator;
