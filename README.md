@@ -1,5 +1,5 @@
 # SauceDemo-Task
-For login funcionality, 7 scenario are defined and executed:
+For login funcionality, 8 scenario are defined and executed:
 
   1.Login with valid credentials
   
